@@ -3,6 +3,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     qt6Packages.sddm
     qt6.qtdeclarative
+    qt6.qtshadertools
   ];
 
   shellHook = ''
