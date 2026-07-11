@@ -75,6 +75,7 @@ Rectangle {
 
             strokeWidth: 2
             strokeColor: "#FF6159"
+            joinStyle: ShapePath.MiterJoin
 
             startX: 0
             startY: 0

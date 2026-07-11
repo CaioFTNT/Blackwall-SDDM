@@ -134,10 +134,11 @@ Rectangle {
         z: -1
 
         ShapePath {
-            fillColor: "#210e15"
+            fillColor: '#aa210e15'
 
             strokeWidth: 2
             strokeColor: "#FF6159"
+            joinStyle: ShapePath.MiterJoin
 
             startX: 0; startY: 0
 
@@ -151,12 +152,14 @@ Rectangle {
         ShapePath {
             fillColor: "#FF6159"
 
-            strokeWidth: 0
+            strokeColor: "#FF6159"
+            strokeWidth: 2
+            joinStyle: ShapePath.MiterJoin
 
-            startX: frame.width - 25; startY: frame.height
-
+            startX: frame.width - 24; startY: frame.height
             PathLine { x: frame.width; y: frame.height }
-            PathLine { x: frame.width; y: frame.height - 25 }
+            PathLine { x: frame.width; y: frame.height - 24 }
+            PathLine { x: frame.width - 24; y: frame.height }
         }
     }
 }
