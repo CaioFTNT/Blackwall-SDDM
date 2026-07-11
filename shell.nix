@@ -19,5 +19,7 @@ pkgs.mkShell {
     export QT_PLUGIN_PATH="${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins:$QT_PLUGIN_PATH"
 
     export QML2_IMPORT_PATH="${pkgs.qt6.qtdeclarative}/lib/qt-6/qml:${pkgs.qt6.qtmultimedia}/lib/qt-6/qml:${pkgs.qt6Packages.sddm}/lib/qt-6/qml"
+
+    alias preview-theme="sddm-greeter-qt6 --test-mode --theme ./theme"
   '';
 }
