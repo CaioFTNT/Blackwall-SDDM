@@ -6,6 +6,8 @@ import "components"
 Pane {
     id: root
 
+    property int userIndex: userModel.lastIndex
+
     width: Screen.width; height: Screen.height
     padding: 0
 
@@ -24,24 +26,44 @@ Pane {
         spacing: 10
 
         UserCard {
-            username: "Johnny Silverhand"
-            picture: "../assets/johnny.png"
+            username: userList.count > 0 ? userList.get(0).name : ""
+            picture: userList.count > 0 ? userList.get(0).icon : ""
         }
 
         Form {
             id: form
 
-            realUserName: "Robert John Linder"
+            realUserName: userList.count > 0 ? userList.get(0).realName : ""
         }
     }
 
-    Component.onCompleted: forceActiveFocus(form)
+    ComboBox {
+        id: sessionSelector
+        model: sessionModel
+        textRole: "name"
+    }
+
+    ListModel { id: userList }
+    Instantiator {
+        model: userModel
+        delegate: QtObject {
+            Component.onCompleted: userList.append({
+                "name": model.name,
+                "realName": model.realName || model.name,
+                "icon": model.icon || ""
+            })
+        }
+    }
+
+    Component.onCompleted: {
+        forceActiveFocus(form)
+    }
 
     Connections {
         target: form
 
-        function onPasswordEnter() {
-            // Log in
+        function onPasswordEnter(password) {
+            sddm.login(userList.get(root.userIndex).name, password, sessionSelector.currentIndex)
         }
     }
 }

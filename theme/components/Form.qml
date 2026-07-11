@@ -7,7 +7,7 @@ Rectangle {
 
     required property string realUserName
 
-    signal passwordEnter()
+    signal passwordEnter(password: string)
 
     width: 500; height: 300
 
@@ -97,7 +97,7 @@ Rectangle {
                     font.pixelSize: 32
                     font.weight: 600
 
-                    onAccepted: {root.passwordEnter()}
+                    onAccepted: root.passwordEnter(text)
                 }
 
                 Button {
