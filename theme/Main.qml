@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtMultimedia
 
 import "components"
 
@@ -15,8 +16,15 @@ Pane {
         anchors.fill: parent
         source: "background.png"
     }
+    Video {
+        visible: config.boolValue("AnimatedBackground")
+        anchors.fill: parent
 
-    Rectangle { anchors.fill: parent; color: '#9a13080c' }
+        source: Qt.resolvedUrl("background.webm")
+
+        autoPlay: true
+        loops: MediaPlayer.Infinite
+    }
 
     Row {
         id: content
