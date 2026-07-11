@@ -9,5 +9,9 @@
       pkgs   = nixpkgs.legacyPackages.${system};
     in {
       devShells.${system}.default = import ./shell.nix { inherit pkgs; };
+
+      packages.${system}.default = import ./package.nix { inherit pkgs; };
+
+      nixosModules.default = import ./module.nix;
     };
 }
