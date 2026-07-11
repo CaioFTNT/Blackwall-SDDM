@@ -5,6 +5,8 @@ pkgs.stdenv.mkDerivation {
 
   src = ./theme;
 
+  dontWrapQtApps = true;
+
   buildInputs = with pkgs; [ qt6.qtmultimedia ];
 
   installPhase = ''
