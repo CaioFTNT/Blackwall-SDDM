@@ -58,7 +58,7 @@ Pane {
             Component.onCompleted: userList.append({
                 "name": model.name,
                 "realName": model.realName || model.name,
-                "icon": model.icon || ""
+                "icon": !model.icon.includes("sddm/faces/.face.icon") ? model.icon : Qt.resolvedUrl("assets/user.svg")
             })
         }
     }
