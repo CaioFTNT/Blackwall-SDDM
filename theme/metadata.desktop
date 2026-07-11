@@ -1,0 +1,8 @@
+[SddmGreeterTheme]
+Name=Blackwall
+Description=Cyberpunk Blackwall Theme
+Author=CaioFTNT
+Type=sddm-theme
+MainScript=Main.qml
+ConfigFile=theme.conf
+QtVersion=6
