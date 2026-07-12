@@ -15,7 +15,7 @@ in {
       enable = true;
 
       package = lib.mkForce pkgs.qt6Packages.sddm;
-      extraPackages = [ themePkg ];
+      extraPackages = [ themePkg pkgs.qt6.qtmultimedia ];
 
       theme = "blackwall";
     };
