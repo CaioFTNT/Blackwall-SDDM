@@ -24,7 +24,7 @@ in {
 
       settings = {
         General = {
-          GreeterEnvironment = "QT_FFMPEG_NO_HWACCEL=1,QT_MULTIMEDIA_PREFERRED_PLUGINS=ffmpeg,LD_LIBRARY_PATH=${pkgs.pipewire}/lib:${pkgs.ffmpeg}/lib:$LD_LIBRARY_PATH,QT_PLUGIN_PATH=${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins:$QT_PLUGIN_PATH";
+          GreeterEnvironment = "LD_LIBRARY_PATH=${pkgs.pipewire}/lib:${pkgs.ffmpeg}/lib:$LD_LIBRARY_PATH,QT_PLUGIN_PATH=${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins:$QT_PLUGIN_PATH";
         };
       };
 
@@ -34,11 +34,11 @@ in {
     environment.systemPackages = [
       themePkg
     ];
-    
+
     fonts.packages = [
       (pkgs.stdenv.mkDerivation {
         name = "blackwall-sddm-fonts";
-        src = ./theme/fonts;
+        src = ./assets/fonts;
         installPhase = ''
           mkdir -p $out/share/fonts/blackwall-sddm
           cp -r ./* $out/share/fonts/blackwall-sddm/

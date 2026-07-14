@@ -3,7 +3,7 @@ pkgs.stdenv.mkDerivation {
   pname = "Blackwall SDDM";
   version = "unstable";
 
-  src = ./theme;
+  src = ./.;
 
   dontWrapQtApps = true;
 
@@ -11,6 +11,6 @@ pkgs.stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/sddm/themes/blackwall
-    cp -r $src/* $out/share/sddm/themes/blackwall
+    cp -r $src/theme/* $out/share/sddm/themes/blackwall
   '';
 }
