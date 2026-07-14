@@ -15,7 +15,18 @@ in {
       enable = true;
 
       package = lib.mkForce pkgs.qt6Packages.sddm;
-      extraPackages = [ themePkg pkgs.qt6.qtmultimedia ];
+      extraPackages = with pkgs; [
+        themePkg
+        qt6.qtmultimedia
+        pipewire
+        ffmpeg
+      ];
+
+      settings = {
+        General = {
+          GreeterEnvironment = "QT_FFMPEG_NO_HWACCEL=1,QT_MULTIMEDIA_PREFERRED_PLUGINS=ffmpeg,LD_LIBRARY_PATH=${pkgs.pipewire}/lib:${pkgs.ffmpeg}/lib:$LD_LIBRARY_PATH,QT_PLUGIN_PATH=${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins:$QT_PLUGIN_PATH";
+        };
+      };
 
       theme = "blackwall";
     };
