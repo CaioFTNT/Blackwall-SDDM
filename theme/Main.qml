@@ -21,6 +21,7 @@ Pane {
         anchors.fill: parent
 
         source: Qt.resolvedUrl("background.webm")
+        muted: true
 
         autoPlay: true
         loops: MediaPlayer.Infinite
@@ -45,10 +46,31 @@ Pane {
         }
     }
 
-    ComboBox {
-        id: sessionSelector
-        model: sessionModel
-        textRole: "name"
+    Rectangle {
+        id: topBar
+
+        color: "transparent"
+
+        width: Screen.width - 100; height: 40
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 40
+
+        clip: false
+
+        SessionSelector {
+            id: sessionSelector
+            model: sessionModel
+            textRole: "name"
+        }
+
+        Clock {
+            anchors.centerIn: parent
+        }
+
+        PowerOptions {
+            anchors.right: parent.right
+            height: parent.height
+        }
     }
 
     ListModel { id: userList }
